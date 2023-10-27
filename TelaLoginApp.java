@@ -1,4 +1,4 @@
-package com.example.implementacaobd;
+package com.example.trampodebd;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -25,27 +25,27 @@ public class TelaLoginApp extends Application {
 
 
         //cria a caixa de usuario
-        TextField usernameField = new TextField();
-        usernameField.setPromptText("Nome de Usuário");
+        TextField nomeUsuario = new TextField();
+        nomeUsuario.setPromptText("Nome de Usuário");
 
         //cria a caixa de senha
-        PasswordField passwordField = new PasswordField();
-        passwordField.setPromptText("Senha");
+        PasswordField senha = new PasswordField();
+        senha.setPromptText("Senha");
 
         //cria o botão de confirmação com a ação do clique
-        Button confirmButton = new Button("Confirmar");
-        confirmButton.setOnAction(e -> {
-            String username = usernameField.getText();
-            exibirTelaBemVindo(username);
+        Button botaoConfirmar = new Button("Confirmar");
+        botaoConfirmar.setOnAction(e -> {
+            String userName = nomeUsuario.getText();
+            exibirTelaBemVindo(userName);
         });
 
-        root.getChildren().addAll(usernameField, passwordField, confirmButton);
+        root.getChildren().addAll(nomeUsuario, senha, botaoConfirmar);
 
         stage.setScene(scene);
         stage.show();
     }
 
-    private void exibirTelaBemVindo(String username) {
+    private void exibirTelaBemVindo(String nomeUsuario) {
 
         //cria a nova tela de boa vindas
         Stage stage = new Stage();
@@ -54,7 +54,7 @@ public class TelaLoginApp extends Application {
         stage.setTitle("Bem-Vindo");
 
         //cria a mensagem de boas vindas
-        Label welcomeLabel = new Label("Olá, " + username + " seja bem-vindo!");
+        Label welcomeLabel = new Label("Olá, " + nomeUsuario + " seja bem-vindo!");
 
         //define a caixa de boas vindas
         StackPane layout = new StackPane(welcomeLabel);
