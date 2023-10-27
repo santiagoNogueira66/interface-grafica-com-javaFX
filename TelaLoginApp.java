@@ -32,37 +32,40 @@ public class TelaLoginApp extends Application {
         PasswordField senha = new PasswordField();
         senha.setPromptText("Senha");
 
-        //cria o botão de confirmação com a ação do clique
-        Button botaoConfirmar = new Button("Confirmar");
-        botaoConfirmar.setOnAction(e -> {
-            String userName = nomeUsuario.getText();
-            exibirTelaBemVindo(userName);
-        });
 
-        root.getChildren().addAll(nomeUsuario, senha, botaoConfirmar);
+        //criar o botão login
+        Button botaoLogin = new Button("Login");
 
+        //criar o botão cadastra-se
+        Button botaoCadastro = new Button("Cadastra-se");
+        botaoCadastro.setOnAction(e ->{escolherFuncionario();});
+
+        //exibe as caixas de texto nomeUsuario, senha e os 2 botões
+        root.getChildren().addAll(nomeUsuario,senha,botaoLogin,botaoCadastro);
+        root.setAlignment(javafx.geometry.Pos.CENTER);
+
+        //faz com que a tela apareça
         stage.setScene(scene);
         stage.show();
+
     }
-
-    private void exibirTelaBemVindo(String nomeUsuario) {
-
-        //cria a nova tela de boa vindas
+    public void escolherFuncionario(){
         Stage stage = new Stage();
+        VBox root = new VBox(10);
 
-        //defini o titulo bem vindo
-        stage.setTitle("Bem-Vindo");
+        TelaCadastroEnfermeiro instancia = new TelaCadastroEnfermeiro();
+        TelaCadastroMedico instancia2 = new TelaCadastroMedico();
 
-        //cria a mensagem de boas vindas
-        Label welcomeLabel = new Label("Olá, " + nomeUsuario + " seja bem-vindo!");
+        Button botaoEnfermeiro = new Button("Enfermeiro");
+        botaoEnfermeiro.setOnAction(e->instancia.start(stage));
+        Button botaoMedico = new Button("medico");
 
-        //define a caixa de boas vindas
-        StackPane layout = new StackPane(welcomeLabel);
+        
 
-        //cria a cena de boa vinda de largura de 300px e altura de 100px
-        Scene scene = new Scene(layout, 300, 100);
+        Scene scene = new Scene(root, 300, 200);
 
-        //exibe a mensagem de boa vindas
+        root.getChildren().addAll(botaoEnfermeiro,botaoMedico);
+        root.setAlignment(javafx.geometry.Pos.CENTER);
         stage.setScene(scene);
         stage.show();
     }
