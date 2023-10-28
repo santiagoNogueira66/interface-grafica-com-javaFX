@@ -12,8 +12,8 @@ public class TelaCadastroMedico extends Application {
     }
 
     @Override
-    public void start(Stage stage2){
-        stage2.setTitle("cadastro medico");
+    public void start(Stage medico){
+        medico.setTitle("cadastro medico");
 
         VBox root  = new VBox(10);
         Scene scene = new Scene(root, 300,350);
@@ -48,7 +48,7 @@ public class TelaCadastroMedico extends Application {
         root.getChildren().add(dataNascimento);
         root.getChildren().add(botaoCadastrar);
         root.setAlignment(javafx.geometry.Pos.CENTER);
-        stage2.setScene(scene);
-        stage2.show();
+        medico.setScene(scene);
+        medico.show();
     }
 }

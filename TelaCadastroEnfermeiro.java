@@ -13,9 +13,9 @@ public class TelaCadastroEnfermeiro extends Application {
         launch(args);
 
     }
-    public void start(Stage stage){
+    public void start(Stage enfermeiro){
         //titulo da minha tela
-        stage.setTitle("cadastro Enfermeiro");
+        enfermeiro.setTitle("cadastro Enfermeiro");
 
         //caixa vertical com tudo
         VBox root= new VBox(10);
@@ -67,7 +67,7 @@ public class TelaCadastroEnfermeiro extends Application {
 
 
         //faz com que as caixas sejam exibidas
-        stage.setScene(scene);
-        stage.show();
+        enfermeiro.setScene(scene);
+        enfermeiro.show();
     }
 }

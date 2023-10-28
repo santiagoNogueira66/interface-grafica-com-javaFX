@@ -6,7 +6,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+
 public class TelaLoginApp extends Application {
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -15,7 +17,7 @@ public class TelaLoginApp extends Application {
 
     //define um titulo para minha aplicação
     public void start(Stage stage) {
-        stage.setTitle("Tela de Login");
+        stage.setTitle("Login");
 
         //cria um caixa na vertical onde o 10 define o espaços entre os elementos
         VBox root = new VBox(10);
@@ -38,8 +40,7 @@ public class TelaLoginApp extends Application {
 
         //criar o botão cadastra-se
         Button botaoCadastro = new Button("Cadastra-se");
-        botaoCadastro.setOnAction(e ->{escolherFuncionario();});
-
+        botaoCadastro.setOnAction(e->escolherFuncionario());
         //exibe as caixas de texto nomeUsuario, senha e os 2 botões
         root.getChildren().addAll(nomeUsuario,senha,botaoLogin,botaoCadastro);
         root.setAlignment(javafx.geometry.Pos.CENTER);
@@ -50,23 +51,29 @@ public class TelaLoginApp extends Application {
 
     }
     public void escolherFuncionario(){
-        Stage stage = new Stage();
-        VBox root = new VBox(10);
 
-        TelaCadastroEnfermeiro instancia = new TelaCadastroEnfermeiro();
-        TelaCadastroMedico instancia2 = new TelaCadastroMedico();
+        VBox root = new VBox(10);
+        Scene scene = new Scene(root, 300, 200);
+        Stage enfermeiro = new Stage();
+        Stage medico = new Stage();
+
+        TelaCadastroEnfermeiro instanciaEnfermeiro = new TelaCadastroEnfermeiro();
+        TelaCadastroMedico instanciamedico = new TelaCadastroMedico();
 
         Button botaoEnfermeiro = new Button("Enfermeiro");
-        botaoEnfermeiro.setOnAction(e->instancia.start(stage));
-        Button botaoMedico = new Button("medico");
+        botaoEnfermeiro.setOnAction(e->instanciaEnfermeiro.start(enfermeiro));
 
-        
-
-        Scene scene = new Scene(root, 300, 200);
+        Button  botaoMedico = new Button("medico");
+        botaoMedico.setOnAction(e->instanciamedico.start(medico));
 
         root.getChildren().addAll(botaoEnfermeiro,botaoMedico);
         root.setAlignment(javafx.geometry.Pos.CENTER);
-        stage.setScene(scene);
-        stage.show();
+
+        medico.setScene(scene);
+        medico.show();
+
+        enfermeiro.setScene(scene);
+        enfermeiro.show();
+
     }
 }
